@@ -1,0 +1,15 @@
+*{
+  box-sizing: border-box;
+}
+body {
+  text-align:center;
+  background-color: #aaaa99;
+}
+.content {
+  position: relative;
+  min-height: 100vh;
+  min-width:100vw;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 8%;
+}
