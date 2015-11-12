@@ -63,12 +63,12 @@ body {
 }
 td {
     position: relative;
-    border:1px solid blue;
+    border:1px solid #111;
+    border-radius:6px;
     background-color:burlywood;
 }
-.pip{
+td div{
     position: absolute;
-    top:23%;
     left:43%;
     height:10px;
     width:10px;
@@ -77,14 +77,9 @@ td {
     box-shadow: 2px 2px 4px black;
     z-index: 999;
 }
-.pip2{
-    position: absolute;
+#pip{
+    top:23%;
+}
+#pip2{
     top:77%;
-    left:43%;
-    height:10px;
-    width:10px;
-    border-radius: 50%;
-    background-color:gainsboro;
-    box-shadow: 2px 2px 4px black;
-    z-index: 999;
 }
