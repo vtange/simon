@@ -11,7 +11,9 @@ app.factory('memory', function(){
 
 app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
     $scope.instrum = memory; // load service
-
+    $scope.set_styling = function (input) {
+        return { "height": input.length, "box-shadow": input.color }
+    }
 }]);//end of controller
   //end of function
 })();
