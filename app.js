@@ -5,13 +5,12 @@
 app.factory('memory', function(){
 
   var storage = {};
- storage.datadata = [];
-
+  storage.xyphone = xylo;
   return storage;
 });//end of service
 
-app.controller('MainCtrl', ['$scope', function($scope){
-    $scope.storage = memory; // load service
+app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
+    $scope.instrum = memory; // load service
 
 }]);//end of controller
   //end of function
