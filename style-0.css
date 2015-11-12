@@ -13,3 +13,15 @@ body {
   text-align: center;
   padding-top: 8%;
 }
+
+.game{
+  position: relative;
+    width:80vh;
+    height:40vh;
+    min-width: 800px;
+    min-height: 400px;
+    margin: auto;
+}
+td {
+    border:1px solid blue;
+}
