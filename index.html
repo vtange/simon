@@ -8,10 +8,13 @@
 </head>
 <body data-ng-app="Simon">
   <div class="content">
-        <table class="game" data-ng-controller="MainCtrl as app">
+      <div class="game" data-ng-controller="MainCtrl as app">
+        <table class="xylo-container">
           <tr>
             <td data-ng-repeat="bar in instrum.xyphone"></td>
             </tr>
           </table>
+          <div class="game-ctrl-panel"></div>
+       </div>
     </div>
 </body>
