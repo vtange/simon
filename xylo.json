@@ -1,0 +1,42 @@
+xylo = [
+    bar1 = {
+        "length": 10,
+        "color": 1,
+        "tune": "mon_Carnivorefung.png"
+    },
+    bar2 = {
+        "length": 10,
+        "color": 1,
+        "tune": "mon_Carnivorefung.png"
+    },
+    bar3 = {
+        "length": 10,
+        "color": 1,
+        "tune": "mon_Carnivorefung.png"
+    },
+    bar4 = {
+        "length": 10,
+        "color": 1,
+        "tune": "mon_Carnivorefung.png"
+    },
+    bar5 = {
+        "length": 10,
+        "color": 1,
+        "tune": "mon_Carnivorefung.png"
+    },
+    bar6 = {
+        "length": 10,
+        "color": 1,
+        "tune": "mon_Carnivorefung.png"
+    },
+    bar7 = {
+        "length": 10,
+        "color": 1,
+        "tune": "mon_Carnivorefung.png"
+    },
+    bar8 = {
+        "length": 10,
+        "color": 1,
+        "tune": "mon_Carnivorefung.png"
+    }
+];
