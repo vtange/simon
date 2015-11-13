@@ -153,6 +153,7 @@ body {
 /*---------*/
 .xylo-container{
   position: relative;
+    display: table;
     width:80vh;
     height:40vh;
     min-width: 800px;
@@ -168,11 +169,13 @@ body {
     background-color:#111;
 }
 .xylo-container .xylo {
-    display: inline-block;
+    display: table-cell;
+        display: inline-block;
     width:12%;
     border:1px solid #111;
     border-radius:6px;
     background-color:burlywood;
+    vertical-align: center;
 }
 #pip-holder{
     position: relative;
