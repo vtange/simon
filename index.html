@@ -6,10 +6,10 @@
     <script type="text/javascript" src="xylo.json"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
-<body data-ng-app="Simon">
-    <div id="darkness"></div>
+<body data-ng-app="Simon" data-ng-controller="MainCtrl as app">
+    <div id="darkness" class="disappear" data-ng-class="{'disappear': !power, 'appear': power}"></div>
   <div class="content">
-      <div class="game" data-ng-controller="MainCtrl as app">
+      <div class="game">
         <div class="xylo-container">
             <div class="xylo" data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)"><div id="pip-holder"><div id="p1"></div><div id="p2"></div></div></div>
           </div>
@@ -25,7 +25,7 @@
                 <h1>Xymon</h1>
                 <span>Power</span>
                 <div class="switch">
-                  <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" data-ng-click="OnOff()">
+                  <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" data-ng-model="power">
                   <label for="cmn-toggle-4"></label>
                 </div>
               </div>

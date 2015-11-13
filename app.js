@@ -14,20 +14,11 @@ app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
     $scope.set_styling = function (input) {
         return { "height": input.length, "box-shadow": input.color }
     }
-    $scope.power = false;
+    $scope.power = false;//changes with checkbox
     $scope.playing = false;
     $scope.strict = false;
     $scope.showingDemo = false;
     $scope.count = 0;
-    $scope.OnOff = function () {
-        if ($scope.power == false){
-            $scope.power = true;
-            console.log("On.");
-        }
-        else {
-            $scope.power = false;
-        }
-    }
     $scope.Play = function () {
         if ($scope.playing == false){
             $scope.playing = true;
