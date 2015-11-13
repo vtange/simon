@@ -27,13 +27,13 @@ app.controller('MainCtrl', ['$scope', 'memory', '$interval', function($scope, me
         }
     };
     $scope.count = 0;
-    $scope.Play = function () {
+    $scope.NewGame = function () {
         if ($scope.playing == false && $scope.power){
             $scope.playing = true;
             $scope.NewSeq();
             $scope.count = 0;
             //wait a few secs. render click blocker element
-            //play level(1)
+            //playlevel(1)
         }
         else {
             $scope.playing = false;
