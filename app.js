@@ -63,7 +63,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$interval', function($scope, me
         //light the corresponding bar
         //play the corresponding tune
         //use delays to time things.
-    
+        //use this for player input as well
     };
     $scope.Listen = function (){
             // turn off  click blocker element
