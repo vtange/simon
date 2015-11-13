@@ -46,11 +46,16 @@ app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
             $scope.strict = false;
         }
     }
-    
-    
-    
-    
-    
+/*    secs -= 1;
+    if (secs < 0) {
+      // countdown is finished
+      
+      // Play audio
+      var wav = 'http://www.oringz.com/oringz-uploads/sounds-917-communication-channel.mp3';
+      var audio = new Audio(wav);
+			audio.play();
+      
+      */
 }]);//end of controller
   //end of function
 })();

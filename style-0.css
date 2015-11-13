@@ -167,7 +167,9 @@ body {
     border-top-right-radius:25px;
     background-color:#111;
 }
-td {
+.xylo-container .xylo {
+    display: inline-block;
+    width:12%;
     border:1px solid #111;
     border-radius:6px;
     background-color:burlywood;
