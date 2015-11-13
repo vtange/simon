@@ -22,21 +22,50 @@ app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
     $scope.Play = function () {
         if ($scope.playing == false){
             $scope.playing = true;
-            console.log("On.");
         }
         else {
             $scope.playing = false;
         }
-    }
+    };
     $scope.Snape = function () {
         if ($scope.strict == false){
             $scope.strict = true;
-            console.log("On.");
         }
         else {
             $scope.strict = false;
         }
-    }
+    };
+    //  sequence stuff
+    $scope.seq = [];
+    $scope.tempo = 1000;
+    $scope.entered = [];
+    
+    
+    
+    $scope.NewSeq = function () {};
+    $scope.PlaySeq = function (){};
+    $scope.Listen = function (){};
+    
+    
+    
+            //generate a 20 num array
+            
+            //play that array
+            
+            //on error, if strict is on, ^ these two
+            
+            //
+            
+            
+            
+            
+            
+    
+    
+    
+    
+    
+    
 /*    secs -= 1;
     if (secs < 0) {
       // countdown is finished
