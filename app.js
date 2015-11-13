@@ -14,6 +14,16 @@ app.controller('MainCtrl', ['$scope', 'memory', function($scope, memory){
     $scope.set_styling = function (input) {
         return { "height": input.length, "box-shadow": input.color }
     }
+    $scope.on = false;
+    $scope.showingDemo = false;
+    
+    
+    
+    
+    
+    
+    
+    
 }]);//end of controller
   //end of function
 })();
