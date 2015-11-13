@@ -15,7 +15,15 @@ body {
   color: #ffffff;
   text-align: center;
 }
-
+#darkness{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width:100%;
+    background: #000;
+    opacity:0;
+}
 
 
 
@@ -169,8 +177,7 @@ body {
     background-color:#111;
 }
 .xylo-container .xylo {
-    display: table-cell;
-        display: inline-block;
+    display: inline-block;
     width:12%;
     border:1px solid #111;
     border-radius:6px;
