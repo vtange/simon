@@ -11,14 +11,14 @@
       <div class="game" data-ng-controller="MainCtrl as app">
         <table class="xylo-container">
           <tr>
-            <td data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)"><div id="pip"></div><div id="pip2"></div></td>
+            <td data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)"><div id="pip-holder"><div id="p1"></div><div id="p2"></div></div></td>
             </tr>
           </table>
           <div class="game-ctrl-panel">
             <div class="display-container">
                 <div class="display">
                     <div class="display-text">
-                            15
+                            {{count}}
                     </div>
                 </div>
               </div>
@@ -26,11 +26,13 @@
                 <h1>Xymon</h1>
                 <span>Power</span>
                 <div class="switch">
-                  <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" ng-disabled="">
+                  <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" data-ng-click="OnOff()">
                   <label for="cmn-toggle-4"></label>
                 </div>
               </div>
             <div class="ctrls-container">
+                <div class="btn-row"><div class="btn start-btn" data-ng-click="Play()"><div class="pitch"><div class="light" data-ng-show="playing"></div></div></div><span>Start</span></div>
+                <div class="btn-row"><div class="btn strict-btn" data-ng-click="Snape()"><div class="pitch"><div class="light" data-ng-show="strict"></div></div></div><span>Strict</span></div>
               </div>
           </div>
        </div>

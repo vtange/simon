@@ -41,41 +41,110 @@ body {
     border-bottom-right-radius:25px;
     background-color:#722;
 }
-
+/*---------*/
+/*displaysec*/
+/*---------*/
 .display-container{
     display: inline-block;
     position:absolute;
     top:0;
     left:0;
     bottom:0;
+    width:190px;
 }
 .display{
     position:relative;
-      top: 50%;
-  transform: translateY(-50%);
-    padding:15%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    margin: auto;
+    width:70%;
+    height:70%;
+    background-color:#011;
+    border-radius:10%;
+   -moz-box-shadow:    inset 0 0 10px #000;
+   -webkit-box-shadow: inset 0 0 10px #000;
+   box-shadow:         inset 0 0 10px #000;
 }
 .display-text{
+    position:relative;
+    top: 50%;
+    transform: translateY(-50%);
+
     font-size: 3em;
-    background-color:#011;
-    padding:30%;
-    border-radius:10%;
 }
 .logo-container{
     width:30%;
     margin: auto;
     text-align: center;
 }
-
-
-
+/*---------*/
+/*startstrict*/
+/*---------*/
 .ctrls-container{
     display: inline-block;
     position:absolute;
     top:0;
     right:0;
     bottom:0;
+    width:30%;
 }
+.btn-row{
+    margin:auto;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+.btn-row span{
+    display: inline-block;
+}
+.btn{
+    display: inline-block;
+    height:50px;
+    width:50px;
+    border:5px solid #333;
+    border-radius: 50%;
+    box-shadow: 3px 3px 4px black;
+    vertical-align: middle;
+    margin-right:10%;
+    overflow: hidden;
+}
+.btn:active{
+    box-shadow: 1px 1px 4px black;
+}
+.start-btn{
+    background-color:rgba(0,0,0,0.2);
+}
+.strict-btn{
+    background-color:rgba(0,0,0,0.2);
+}
+.start-btn .light{
+    background-color:greenyellow;
+}
+.strict-btn .light{
+    background-color:coral;
+}
+.pitch{
+    position:relative;
+    height:100%;
+    width:100%;
+    background-color: #111;
+}
+.light{
+    /*center vert and horiz*/
+    position:relative;
+    margin: auto;
+    top:50%;
+    transform: translateY(-50%);
+    height:25%;
+    width:25%;
+      -webkit-filter: blur(3px);
+      -moz-filter: blur(3px);
+      -o-filter: blur(3px);
+      -ms-filter: blur(3px);
+      filter: blur(3px);
+}
+
+
 
 
 
@@ -99,12 +168,16 @@ body {
     background-color:#111;
 }
 td {
-    position: relative;
     border:1px solid #111;
     border-radius:6px;
     background-color:burlywood;
 }
-td div{
+#pip-holder{
+    position: relative;
+    height:100%;
+    width:100%;
+}
+#pip-holder div{
     position: absolute;
     left:43%;
     height:10px;
@@ -114,10 +187,10 @@ td div{
     box-shadow: 2px 2px 4px black;
     z-index: 999;
 }
-#pip{
+#p1{
     top:23%;
 }
-#pip2{
+#p2{
     top:77%;
 }
 
@@ -158,7 +231,7 @@ input.cmn-toggle-round-flat + label:before {
   left: 2px;
   bottom: 2px;
   right: 2px;
-  background-color: #fff;
+  background-color: #100;
   border-radius: 60px;
   transition: background 0.4s;
 }
