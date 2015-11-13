@@ -9,10 +9,15 @@ app.factory('memory', function(){
   return storage;
 });//end of service
 
-app.controller('MainCtrl', ['$scope', 'memory', '$interval', function($scope, memory, $interval){
+app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', function($scope, memory, $interval, $timeout){
     $scope.instrum = memory; // load service
     $scope.set_styling = function (input) {
-        return { "height": input.length, "box-shadow": input.color }
+        if (input.playing) {
+            return { "height": input.length, "box-shadow": input.color }
+        }
+        else{
+        return { "height": input.length }
+        };
     };
     $scope.power = false;//changes with checkbox
     $scope.playing = false;
@@ -26,6 +31,10 @@ app.controller('MainCtrl', ['$scope', 'memory', '$interval', function($scope, me
             $scope.strict = false;
         }
     };
+        //  sequence stuff
+    $scope.seq = [];
+    $scope.tempo = 2000;
+    $scope.playerEntered = [];
     $scope.count = 0;
     $scope.NewGame = function () {
         if ($scope.playing == false && $scope.power){
@@ -39,11 +48,8 @@ app.controller('MainCtrl', ['$scope', 'memory', '$interval', function($scope, me
             $scope.playing = false;
         }
     };
-    //  sequence stuff
-    $scope.seq = [];
-    $scope.tempo = 1000;
-    $scope.entered = [];
     $scope.NewSeq = function () {
+        $scope.seq = [];
         for (var i=0;i<20;i++){
             $scope.seq.push(Math.floor(Math.random() * 8));
         }
@@ -59,11 +65,17 @@ app.controller('MainCtrl', ['$scope', 'memory', '$interval', function($scope, me
     };
     
 
-    $scope.Play = function(seqNumber){
+    $scope.Play = function(bar){
         //light the corresponding bar
         //play the corresponding tune
         //use delays to time things.
         //use this for player input as well
+        console.log(bar);
+        bar.playing = true;
+        
+        
+        
+        
     };
     $scope.Listen = function (){
             // turn off  click blocker element
