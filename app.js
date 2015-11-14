@@ -59,6 +59,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };//strict mode
         //  sequence stuff
     $scope.seq = [];
+    $scope.playerEntered = [];
     $scope.tempo = 700;
     $scope.count = 0;
     $scope.NewGame = function () {
@@ -108,15 +109,25 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         bar.playing = false;
     };
     $scope.Listen = function (){
-        var playerEntered = [];
+        $scope.playerEntered = [];
         $scope.listening = true;
             // turn off  click blocker element
         console.log("Listening");
         
+        
+        
+        
+        
+        
         //if timeout or fail, show frown, delay, playLevel(num)
         //if sucess, show happy, delay, playLevel(num+1);
     };
-    
+    $scope.Enter = function (bar){
+        if ($scope.listening){
+            $scope.playerEntered.push(bar.number);
+            console.log($scope.playerEntered);
+        };
+    };    
     
 
 
