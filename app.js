@@ -146,6 +146,8 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         };
     };
     $scope.Failure = function (){
+        //reset entered, prevents string of failures and failurefunctions
+        $scope.playerEntered = [];
         //show frowny face
         var placeholder = $scope.count;
         $scope.count = "☹";
