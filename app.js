@@ -32,18 +32,18 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.strict = false;
     $scope.showingDemo = false;
     $scope.CutPower = function () {
-        if ($scope.showingDemo){
+        if ($scope.showingDemo){//end current demo
             $timeout.cancel(endSeq);
             $interval.cancel(play);
             $interval.cancel(stopplay);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
             $scope.showingDemo = false;
         };
-        if ($scope.playing){
+        if ($scope.playing){//turn off play button
             $scope.playing = false;
             $scope.count = 0;
         }
-        if ($scope.strict){
+        if ($scope.strict){//turn off strict button
             $scope.strict = false;
         }
     };
@@ -61,14 +61,14 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.playerEntered = [];
     $scope.count = 0;
     $scope.NewGame = function () {
-        if ($scope.showingDemo){
+        if ($scope.showingDemo){//end current demo
             $timeout.cancel(endSeq);
             $interval.cancel(play);
             $interval.cancel(stopplay);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
             $scope.showingDemo = false;
         };
-        if ($scope.playing == false && $scope.power){
+        if ($scope.playing == false && $scope.power){//turn on new game
             $scope.playing = true;
             $scope.NewSeq();
             $scope.count = 0;
@@ -76,7 +76,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             //playlevel(1)
             $timeout(function(){$scope.playLevel(5)},500);
         }
-        else {
+        else {//turn off game, reset count
             $scope.playing = false;
             $scope.count = 0;
         }
@@ -95,7 +95,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         $timeout(function(){$scope.Listen()},500);
     };
     $scope.PlaySeq = function(tempo, num){
-            $scope.showingDemo = true;
+            $scope.showingDemo = true;//begin demo
             var i = 0;
             play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]])},500);
             stopplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},500+tempo);
@@ -103,7 +103,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
                     $interval.cancel(play);
                     $interval.cancel(stopplay);
             };
-            endSeq = $timeout(function(){StopSeq();$scope.showingDemo = false;},(500+tempo)*num);
+            endSeq = $timeout(function(){StopSeq();$scope.showingDemo = false;},(500+tempo)*num);//end demo
     };
     $scope.Play = function(bar){
         //light the corresponding bar
