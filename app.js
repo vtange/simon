@@ -32,6 +32,8 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.strict = false;
     $scope.showingDemo = false;
     $scope.CutPower = function () {
+        $interval.cancel(play);
+        $interval.cancel(unplay);
         if ($scope.playing){
             $scope.playing = false;
             $scope.count = 0;
@@ -82,8 +84,8 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };
     $scope.PlaySeq = function(tempo, num){
             var i = 0;
-            var play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]])},500);
-            var unplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},500+tempo);
+            play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]])},500);
+            unplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},500+tempo);
             var StopSeq = function(){
                     $interval.cancel(play);
                     $interval.cancel(unplay);
