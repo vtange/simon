@@ -113,11 +113,12 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         $scope.listening = true;
             // turn off  click blocker element
         console.log("Listening");
-        
-        
-        
-        
-        
+        $scope.$watchCollection(
+            "playerEntered",
+            function( newValue, oldValue ) {
+            console.log(newValue);
+            }
+        );
         
         //if timeout or fail, show frown, delay, playLevel(num)
         //if sucess, show happy, delay, playLevel(num+1);
@@ -125,7 +126,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.Enter = function (bar){
         if ($scope.listening){
             $scope.playerEntered.push(bar.number);
-            console.log($scope.playerEntered);
         };
     };    
     
