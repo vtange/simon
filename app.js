@@ -116,7 +116,10 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         $scope.$watchCollection(
             "playerEntered",
             function( newValue, oldValue ) {
-            console.log(newValue);
+                if(newValue.length > 0){
+                console.log(newValue);
+                console.log($scope.seq.slice(0,newValue.length));
+                }
             }
         );
         
