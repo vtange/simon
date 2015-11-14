@@ -58,7 +58,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //  sequence stuff
     $scope.seq = [];
     $scope.tempo = 700;
-    $scope.playerEntered = [];
+    $scope.listening = false;
     $scope.count = 0;
     $scope.NewGame = function () {
         if ($scope.showingDemo){//end current demo
@@ -102,7 +102,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.Play = function(bar){
         //light the corresponding bar
         //play the corresponding tune
-        //use delays to time things. prevent clickspam
         //use this for player input as well
         bar.playing = true;
     };
@@ -110,6 +109,8 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         bar.playing = false;
     };
     $scope.Listen = function (){
+        var playerEntered = [];
+        $scope.listening = true;
             // turn off  click blocker element
         console.log("Listening");
         
