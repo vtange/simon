@@ -33,6 +33,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.showingDemo = false;
     $scope.CutPower = function () {
         if ($scope.showingDemo){
+            $timeout.cancel(endSeq);
             $interval.cancel(play);
             $interval.cancel(stopplay);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
@@ -61,6 +62,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.count = 0;
     $scope.NewGame = function () {
         if ($scope.showingDemo){
+            $timeout.cancel(endSeq);
             $interval.cancel(play);
             $interval.cancel(stopplay);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
@@ -101,7 +103,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
                     $interval.cancel(play);
                     $interval.cancel(stopplay);
             };
-            $timeout(function(){StopSeq();$scope.showingDemo = false;},(500+tempo)*num);
+            endSeq = $timeout(function(){StopSeq();$scope.showingDemo = false;},(500+tempo)*num);
     };
     $scope.Play = function(bar){
         //light the corresponding bar
