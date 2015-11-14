@@ -120,10 +120,12 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
                 console.log(newValue);
                 console.log($scope.seq.slice(0,newValue.length));
                     if($scope.seq.slice(0,newValue.length).equals(newValue)&& newValue.length == $scope.count){
-                        console.log("success");//run sucess function, $scope.listening = false;
+                        $scope.listening = false;
+                        console.log("success");//run sucess function
                     }
                     if(!$scope.seq.slice(0,newValue.length).equals(newValue)){
-                        console.log("failure");//run failure function, $scope.listening = false;
+                        $scope.listening = false;
+                        console.log("failure");//run failure function
                     }
                 }
             }
@@ -141,18 +143,26 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             $scope.playerEntered.push(bar.number);
         };
     };
-    
+    $scope.Failure = function (){
+        //show frowny face
+        
+        //$scope.PlaySeq($scope.tempo, $scope.count)
+        
+        //if strict, newseq, reset count, tempo
+        //$timeout(function(){$scope.count = 1;$scope.tempo = 700; $scope.PlaySeq($scope.tempo, $scope.count)},500);//+1 count, start demo in 500
+    };    
+    $scope.LevelUp = function (){
+        //show happy face
+        
+        //increment count, tempo
+        //$timeout(function(){$scope.count +=1;$scope.tempo +=1; $scope.PlaySeq($scope.tempo, $scope.count)},500);//+1 count, start demo in 500
+        
+    };
 
-
     
     
     
-    
-    
-/*    secs -= 1;
-    if (secs < 0) {
-      // countdown is finished
-      
+/*
       // Play audio
       var wav = 'http://www.oringz.com/oringz-uploads/sounds-917-communication-channel.mp3';
       var audio = new Audio(wav);
