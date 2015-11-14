@@ -66,13 +66,19 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };
     $scope.playLevel = function(num){
         $scope.count = num;
-        for (var i=0; i < $scope.count; i++){
-            console.log($scope.instrum.xyphone[$scope.seq[i]]);
-            $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]])},500);
-            $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])},1200);
-        }
+        $scope.PlaySeq($scope.tempo);
         //short delay, run wait for player input function
 
+    };
+    $scope.PlaySeq = function(tempo){
+            var i = 0;
+            var play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]])},500);
+            var unplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},1200);
+            var StopSeq = function(){
+                    $interval.cancel(play);
+                    $interval.cancel(unplay);
+            };
+            $timeout(function(){StopSeq()},tempo*10);
     };
     $scope.Play = function(bar){
         //light the corresponding bar
@@ -80,9 +86,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //use delays to time things. prevent clickspam
         //use this for player input as well
         bar.playing = true;
-        
-        
-        
     };
     $scope.UnPlay = function(bar){
         bar.playing = false;
