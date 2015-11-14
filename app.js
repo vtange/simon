@@ -67,8 +67,8 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.playLevel = function(num){
         $scope.count = num;
         for (var i=0; i < $scope.count; i++){
-            $timeout(function(){$scope.Play($scope.instrum.xyphone[num-1])},500);
-            $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[num-1])},1000);
+            $timeout(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i-1]])},500);
+            $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i-1]])},1200);
         }
         //short delay, run wait for player input function
 
