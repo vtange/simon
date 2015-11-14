@@ -41,7 +41,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };
         //  sequence stuff
     $scope.seq = [];
-    $scope.tempo = 2000;
+    $scope.tempo = 700;
     $scope.playerEntered = [];
     $scope.count = 0;
     $scope.NewGame = function () {
@@ -66,19 +66,19 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };
     $scope.playLevel = function(num){
         $scope.count = num;
-        $scope.PlaySeq($scope.tempo);
+        $scope.PlaySeq($scope.tempo, $scope.count);
         //short delay, run wait for player input function
 
     };
-    $scope.PlaySeq = function(tempo){
+    $scope.PlaySeq = function(tempo, num){
             var i = 0;
             var play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]])},500);
-            var unplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},1200);
+            var unplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},500+tempo);
             var StopSeq = function(){
                     $interval.cancel(play);
                     $interval.cancel(unplay);
             };
-            $timeout(function(){StopSeq()},tempo*10);
+            $timeout(function(){StopSeq()},(500+tempo)*num);
     };
     $scope.Play = function(bar){
         //light the corresponding bar
