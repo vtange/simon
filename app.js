@@ -153,13 +153,15 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         $scope.count = "☹";
         $timeout(function(){$scope.count = placeholder},1500);//scopecount back
         
-        
+        if ($scope.strict){
         //if strict mode, newseq, reset count, tempo
-        //$timeout(function(){$scope.count = 1;$scope.tempo = 700; $scope.PlaySeq($scope.tempo, $scope.count)},500);//restart demo
-        
+            $scope.NewSeq();
+            $timeout(function(){$scope.count = 1;$scope.tempo = 700; $scope.PlaySeq($scope.tempo, $scope.count)},1500);//restart demo
+        }
+        else{
         //else
-        $timeout(function(){$scope.PlaySeq($scope.tempo, $scope.count)},1500);//just restart demo in 1500
-        
+            $timeout(function(){$scope.PlaySeq($scope.tempo, $scope.count)},1500);//just restart demo in 1500
+        }
 
     };    
     $scope.LevelUp = function (){
