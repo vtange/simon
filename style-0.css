@@ -197,6 +197,7 @@ body {
     border-radius:6px;
     background-color:burlywood;
     vertical-align: center;
+    cursor: pointer;
 }
 #pip-holder{
     position: relative;

@@ -145,14 +145,24 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };
     $scope.Failure = function (){
         //show frowny face
+        //var placeholder = $scope.count
+        //$scope.count = show face
+        //$timeout(function(){$scope.count = placeholder},500);//scopecount back
         
-        //$scope.PlaySeq($scope.tempo, $scope.count)
         
-        //if strict, newseq, reset count, tempo
-        //$timeout(function(){$scope.count = 1;$scope.tempo = 700; $scope.PlaySeq($scope.tempo, $scope.count)},500);//+1 count, start demo in 500
+        //if strict mode, newseq, reset count, tempo
+        //$timeout(function(){$scope.count = 1;$scope.tempo = 700; $scope.PlaySeq($scope.tempo, $scope.count)},500);//restart demo
+        
+        //else, set $scope.count = what it was before
+        //$timeout(function(){$scope.PlaySeq($scope.tempo, $scope.count)},500);//just restart demo in 500
+        
+
     };    
     $scope.LevelUp = function (){
         //show happy face
+        //var placeholder = $scope.count
+        //$scope.count = show face
+        //$timeout(function(){$scope.count = placeholder},500);//scopecount back
         
         //increment count, tempo
         //$timeout(function(){$scope.count +=1;$scope.tempo +=1; $scope.PlaySeq($scope.tempo, $scope.count)},500);//+1 count, start demo in 500
