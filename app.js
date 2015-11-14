@@ -150,7 +150,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         $scope.playerEntered = [];
         //show frowny face
         var placeholder = $scope.count;
-        $scope.count = "☹";
+        $scope.count = "😞";
         $timeout(function(){$scope.count = placeholder},1500);//scopecount back
         
         if ($scope.strict){
@@ -162,16 +162,28 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //else
             $timeout(function(){$scope.PlaySeq($scope.tempo, $scope.count)},1500);//just restart demo in 1500
         }
-
     };    
     $scope.LevelUp = function (){
         //show happy face
         var placeholder = $scope.count;
-        $scope.count = "☺";
-        $timeout(function(){$scope.count = placeholder},1500);//scopecount back
+        $scope.count = "😊";
         
+        if ($scope.count == 20){
+        //longer happy face, dance around flash
+            $timeout(function(){$scope.count = "😄"},1500);//display in 1.5sec
+            $timeout(function(){$scope.count = "Win"},3000);//display in another 1.5sec
+            $timeout(function(){$scope.count = "😄"},4500);//display in another 1.5sec
+            $timeout(function(){$scope.count = "Win"},6000);//display in another 1.5sec
+        //if 20 count, newseq, reset count, tempo
+            $timeout(function(){$scope.count = placeholder},7500);//scopecount back in 7.5
+            $scope.NewSeq();
+            $timeout(function(){$scope.count = 1;$scope.tempo = 700; $scope.PlaySeq($scope.tempo, $scope.count)},7500);//restart demo in 7.5 sec
+        }
+        else{
+        $timeout(function(){$scope.count = placeholder},1500);//scopecount back in 1.4sec
         //increment count, tempo
-        $timeout(function(){$scope.count +=1;$scope.tempo -=50; $scope.PlaySeq($scope.tempo, $scope.count)},1500);//+1 count, start demo again in 1500
+        $timeout(function(){$scope.count +=1;$scope.tempo -=25; $scope.PlaySeq($scope.tempo, $scope.count)},1500);//+1 count, start demo again in 1500
+        }
     };
 
     
