@@ -27,10 +27,12 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         return {  }
         };
     };
+    //states and settings
     $scope.power = false;//changes with checkbox
     $scope.playing = false;
     $scope.strict = false;
     $scope.showingDemo = false;
+    $scope.listening = false;
     $scope.CutPower = function () {
         if ($scope.showingDemo){//end current demo
             $timeout.cancel(EndSeq);
@@ -46,7 +48,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         if ($scope.strict){//turn off strict button
             $scope.strict = false;
         }
-    };
+    };//power off cancel all intervals, timeouts
     $scope.Snape = function () {
         if ($scope.strict == false && $scope.power && !$scope.playing){
             $scope.strict = true;
@@ -54,11 +56,10 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         else {
             $scope.strict = false;
         }
-    };
+    };//strict mode
         //  sequence stuff
     $scope.seq = [];
     $scope.tempo = 700;
-    $scope.listening = false;
     $scope.count = 0;
     $scope.NewGame = function () {
         if ($scope.showingDemo){//end current demo
@@ -72,8 +73,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             $scope.playing = true;
             $scope.NewSeq();
             $scope.count = 0;
-            //wait a few secs. render click blocker element
-            //playlevel(1)
             $timeout(function(){$scope.count +=1; $scope.PlaySeq($scope.tempo, $scope.count)},500);//+1 count, start demo in 500
         }
         else {//turn off game, reset count
