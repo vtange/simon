@@ -119,8 +119,11 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
                 if(newValue.length > 0){
                 console.log(newValue);
                 console.log($scope.seq.slice(0,newValue.length));
-                    if($scope.seq.slice(0,newValue.length).equals(newValue)){
-                        console.log("match");
+                    if($scope.seq.slice(0,newValue.length).equals(newValue)&& newValue.length == $scope.count){
+                        console.log("success");//run sucess function, $scope.listening = false;
+                    }
+                    if(!$scope.seq.slice(0,newValue.length).equals(newValue)){
+                        console.log("failure");//run failure function, $scope.listening = false;
                     }
                 }
             }
