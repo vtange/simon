@@ -31,6 +31,15 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.playing = false;
     $scope.strict = false;
     $scope.showingDemo = false;
+    $scope.CutPower = function () {
+        if ($scope.playing){
+            $scope.playing = false;
+            $scope.count = 0;
+        }
+        if ($scope.strict){
+            $scope.strict = false;
+        }
+    };
     $scope.Snape = function () {
         if ($scope.strict == false && $scope.power && !$scope.playing){
             $scope.strict = true;
@@ -55,6 +64,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         }
         else {
             $scope.playing = false;
+            $scope.count = 0;
         }
     };
     $scope.NewSeq = function () {
@@ -68,7 +78,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         $scope.count = num;
         $scope.PlaySeq($scope.tempo, $scope.count);
         //short delay, run wait for player input function
-
+        $timeout(function(){$scope.Listen()},500);
     };
     $scope.PlaySeq = function(tempo, num){
             var i = 0;
@@ -92,7 +102,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };
     $scope.Listen = function (){
             // turn off  click blocker element
-        
+        console.log("Listening");
         
         //if timeout or fail, show frown, delay, playLevel(num)
         //if sucess, show happy, delay, playLevel(num+1);
