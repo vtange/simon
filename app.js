@@ -122,10 +122,12 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
                     if($scope.seq.slice(0,newValue.length).equals(newValue)&& newValue.length == $scope.count){
                         $scope.listening = false;
                         console.log("success");//run sucess function
+                        $scope.LevelUp();
                     }
                     if(!$scope.seq.slice(0,newValue.length).equals(newValue)){
                         $scope.listening = false;
                         console.log("failure");//run failure function
+                        $scope.Failure();
                     }
                 }
             }
@@ -145,28 +147,27 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };
     $scope.Failure = function (){
         //show frowny face
-        //var placeholder = $scope.count
-        //$scope.count = show face
-        //$timeout(function(){$scope.count = placeholder},500);//scopecount back
+        var placeholder = $scope.count;
+        $scope.count = "☹";
+        $timeout(function(){$scope.count = placeholder},1500);//scopecount back
         
         
         //if strict mode, newseq, reset count, tempo
         //$timeout(function(){$scope.count = 1;$scope.tempo = 700; $scope.PlaySeq($scope.tempo, $scope.count)},500);//restart demo
         
-        //else, set $scope.count = what it was before
-        //$timeout(function(){$scope.PlaySeq($scope.tempo, $scope.count)},500);//just restart demo in 500
+        //else
+        $timeout(function(){$scope.PlaySeq($scope.tempo, $scope.count)},1500);//just restart demo in 1500
         
 
     };    
     $scope.LevelUp = function (){
         //show happy face
-        //var placeholder = $scope.count
-        //$scope.count = show face
-        //$timeout(function(){$scope.count = placeholder},500);//scopecount back
+        var placeholder = $scope.count;
+        $scope.count = "☺";
+        $timeout(function(){$scope.count = placeholder},1500);//scopecount back
         
         //increment count, tempo
-        //$timeout(function(){$scope.count +=1;$scope.tempo +=1; $scope.PlaySeq($scope.tempo, $scope.count)},500);//+1 count, start demo in 500
-        
+        $timeout(function(){$scope.count +=1;$scope.tempo -=50; $scope.PlaySeq($scope.tempo, $scope.count)},1500);//+1 count, start demo again in 1500
     };
 
     
