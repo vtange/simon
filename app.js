@@ -19,6 +19,14 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         return { "height": input.length }
         };
     };
+    $scope.backlight = function (input) {
+        if (input.playing) {
+            return { "box-shadow": input.light }
+        }
+        else{
+        return {  }
+        };
+    };
     $scope.power = false;//changes with checkbox
     $scope.playing = false;
     $scope.strict = false;
@@ -66,7 +74,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.Play = function(bar){
         //light the corresponding bar
         //play the corresponding tune
-        //use delays to time things.
+        //use delays to time things. prevent clickspam
         //use this for player input as well
         console.log(bar);
         bar.playing = true;
@@ -75,15 +83,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         
     };
     $scope.UnPlay = function(bar){
-        //light the corresponding bar
-        //play the corresponding tune
-        //use delays to time things.
-        //use this for player input as well
-        console.log(bar);
         bar.playing = false;
-        
-        
-        
     };
     $scope.Listen = function (){
             // turn off  click blocker element

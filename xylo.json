@@ -3,48 +3,56 @@ xylo = [
         "playing": false,
         "length": 340,
         "color": "0px 340px rgba(255, 0, 80, 0.3) inset",
+        "light": "0px 0px 30px rgba(255, 0, 80, 0.3)",
         "tune": "mon_Carnivorefung.png"
     },
     bar2 = {
         "playing": false,
         "length": 320,
         "color": "0px 320px rgba(255, 0, 0, 0.3) inset",
+        "light": "0px 0px 30px rgba(255, 0, 0, 0.3)",
         "tune": "mon_Carnivorefung.png"
     },
     bar3 = {
         "playing": false,
         "length": 300,
         "color": "0px 300px rgba(255, 100, 0, 0.3) inset",
+        "light": "0px 0px 30px rgba(255, 100, 0, 0.3)",
         "tune": "mon_Carnivorefung.png"
     },
     bar4 = {
         "playing": false,
         "length": 280,
         "color": "0px 280px rgba(255, 200, 0, 0.3) inset",
+        "light": "0px 0px 30px rgba(255, 200, 0, 0.3)",
         "tune": "mon_Carnivorefung.png"
     },
     bar5 = {
         "playing": false,
         "length": 260,
         "color": "0px 260px rgba(100, 255, 0, 0.3) inset",
+        "light": "0px 0px 30px rgba(100, 255, 0, 0.3)",
         "tune": "mon_Carnivorefung.png"
     },
     bar6 = {
         "playing": false,
         "length": 240,
         "color": "0px 240px rgba(0, 255, 92, 0.3) inset",
+        "light": "0px 0px 30px rgba(0, 255, 92, 0.3)",
         "tune": "mon_Carnivorefung.png"
     },
     bar7 = {
         "playing": false,
         "length": 220,
         "color": "0px 220px rgba(0, 255, 255, 0.3) inset",
+        "light": "0px 0px 30px rgba(0, 255, 255, 0.3)",
         "tune": "mon_Carnivorefung.png"
     },
     bar8 = {
         "playing": false,
         "length": 200,
         "color": "0px 200px rgba(0, 0, 255, 0.3) inset",
+        "light": "0px 0px 30px rgba(0, 0, 255, 0.3)",
         "tune": "mon_Carnivorefung.png"
     }
 ];
