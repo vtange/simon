@@ -33,7 +33,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.showingDemo = false;
     $scope.CutPower = function () {
         if ($scope.showingDemo){//end current demo
-            $timeout.cancel(endSeq);
+            $timeout.cancel(EndSeq);
             $interval.cancel(play);
             $interval.cancel(stopplay);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
@@ -62,7 +62,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.count = 0;
     $scope.NewGame = function () {
         if ($scope.showingDemo){//end current demo
-            $timeout.cancel(endSeq);
+            $timeout.cancel(EndSeq);
             $interval.cancel(play);
             $interval.cancel(stopplay);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
@@ -74,7 +74,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             $scope.count = 0;
             //wait a few secs. render click blocker element
             //playlevel(1)
-            $timeout(function(){$scope.playLevel(5)},500);
+            $timeout(function(){$scope.count +=1; $scope.PlaySeq($scope.tempo, $scope.count)},500);//+1 count, start demo in 500
         }
         else {//turn off game, reset count
             $scope.playing = false;
@@ -88,12 +88,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         }
         console.log($scope.seq);
     };
-    $scope.playLevel = function(num){
-        $scope.count = num;
-        $scope.PlaySeq($scope.tempo, $scope.count);
-        //short delay, run wait for player input function
-        $timeout(function(){$scope.Listen()},500);
-    };
     $scope.PlaySeq = function(tempo, num){
             $scope.showingDemo = true;//begin demo
             var i = 0;
@@ -103,7 +97,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
                     $interval.cancel(play);
                     $interval.cancel(stopplay);
             };
-            endSeq = $timeout(function(){StopSeq();$scope.showingDemo = false;},(500+tempo)*num);//end demo
+            EndSeq = $timeout(function(){StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);},(500+tempo)*num);//end demo, start listen phase in 500
     };
     $scope.Play = function(bar){
         //light the corresponding bar
