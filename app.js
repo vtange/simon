@@ -9,7 +9,7 @@ app.factory('memory', function(){
   return storage;
 });//end of service
 
-app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', function($scope, memory, $interval, $timeout){
+app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', function($scope, memory, $timeout, $interval){
     $scope.instrum = memory; // load service
     $scope.set_styling = function (input) {
         if (input.playing) {
@@ -51,6 +51,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             $scope.count = 0;
             //wait a few secs. render click blocker element
             //playlevel(1)
+            $timeout(function(){$scope.playLevel(1)},500);
         }
         else {
             $scope.playing = false;
@@ -65,8 +66,9 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     };
     $scope.playLevel = function(num){
         $scope.count = num;
-        for (var i=0; i < level; i++){
-            //play seq[level-1]
+        for (var i=0; i < $scope.count; i++){
+            $timeout(function(){$scope.Play($scope.instrum.xyphone[num-1])},500);
+            $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[num-1])},1000);
         }
         //short delay, run wait for player input function
 
