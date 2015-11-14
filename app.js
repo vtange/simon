@@ -51,7 +51,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             $scope.count = 0;
             //wait a few secs. render click blocker element
             //playlevel(1)
-            $timeout(function(){$scope.playLevel(1)},500);
+            $timeout(function(){$scope.playLevel(5)},500);
         }
         else {
             $scope.playing = false;
@@ -67,8 +67,9 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.playLevel = function(num){
         $scope.count = num;
         for (var i=0; i < $scope.count; i++){
-            $timeout(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i-1]])},500);
-            $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i-1]])},1200);
+            console.log($scope.instrum.xyphone[$scope.seq[i]]);
+            $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]])},500);
+            $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])},1200);
         }
         //short delay, run wait for player input function
 
@@ -78,7 +79,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //play the corresponding tune
         //use delays to time things. prevent clickspam
         //use this for player input as well
-        console.log(bar);
         bar.playing = true;
         
         
