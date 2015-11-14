@@ -63,8 +63,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //short delay, run wait for player input function
 
     };
-    
-
     $scope.Play = function(bar){
         //light the corresponding bar
         //play the corresponding tune
@@ -73,6 +71,16 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         console.log(bar);
         bar.playing = true;
         
+        
+        
+    };
+    $scope.UnPlay = function(bar){
+        //light the corresponding bar
+        //play the corresponding tune
+        //use delays to time things.
+        //use this for player input as well
+        console.log(bar);
+        bar.playing = false;
         
         
         

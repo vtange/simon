@@ -11,7 +11,7 @@
   <div class="content">
       <div class="game">
         <div class="xylo-container">
-            <div class="xylo" data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)" data-ng-click="Play(bar)"><div id="pip-holder"><div id="p1"></div><div id="p2"></div></div></div>
+            <div class="xylo" data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)" data-ng-mousedown="Play(bar)"  ng-mouseup="UnPlay(bar)"><div id="pip-holder"><div id="p1"></div><div id="p2"></div></div></div>
           </div>
           <div class="game-ctrl-panel">
             <div class="display-container">
