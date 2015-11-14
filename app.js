@@ -60,6 +60,12 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.playerEntered = [];
     $scope.count = 0;
     $scope.NewGame = function () {
+        if ($scope.showingDemo){
+            $interval.cancel(play);
+            $interval.cancel(stopplay);
+            for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
+            $scope.showingDemo = false;
+        };
         if ($scope.playing == false && $scope.power){
             $scope.playing = true;
             $scope.NewSeq();
