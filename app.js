@@ -119,18 +119,25 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
                 if(newValue.length > 0){
                 console.log(newValue);
                 console.log($scope.seq.slice(0,newValue.length));
+                    if($scope.seq.slice(0,newValue.length).equals(newValue)){
+                        console.log("match");
+                    }
                 }
             }
         );
         
-        //if timeout or fail, show frown, delay, playLevel(num)
-        //if sucess, show happy, delay, playLevel(num+1);
+        //if timeout or fail, show frown, delay, PlaySeq(current tempo, num)
+        
+        
+        
+        
+        //if sucess, show happy, delay, PlaySeq(num+1);
     };
     $scope.Enter = function (bar){
         if ($scope.listening){
             $scope.playerEntered.push(bar.number);
         };
-    };    
+    };
     
 
 
