@@ -11,6 +11,8 @@ app.factory('memory', function(){
 
 app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', function($scope, memory, $timeout, $interval){
     $scope.instrum = memory; // load service
+    var sounds = [];//preload sounds
+    for (var k=0;k<$scope.instrum.xyphone.length;k++){sounds.push(new Audio($scope.instrum.xyphone[k].tune))};
     $scope.set_styling = function (input) {
         if (input.playing) {
             return { "height": input.length, "box-shadow": input.color }
@@ -115,8 +117,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //play the corresponding tune
         //use this for player input as well
         bar.playing = true;
-        var audio = new Audio(bar.tune);
-            audio.play();
+            sounds[bar.number].play();
 /*
       // Play audio
       var wav = 'http://www.oringz.com/oringz-uploads/sounds-917-communication-channel.mp3';
