@@ -118,7 +118,9 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //play the corresponding tune
         //use this for player input as well
         bar.playing = true;
-            sounds[bar.number].play();
+            //sounds[bar.number].play(); has fast playing no sound issue
+        var audio = new Audio(bar.tune);
+        audio.play();
     };
     $scope.UnPlay = function(bar){
         bar.playing = false;
