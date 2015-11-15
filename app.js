@@ -104,13 +104,17 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.PlaySeq = function(tempo, num){
             $scope.showingDemo = true;//begin demo
             var i = 0;
-            play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]])},500);
-            stopplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},500+tempo);
+            play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]]); $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1;CheckEnd()},tempo*0.75);},tempo);
+            //stopplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},500+tempo);
             var StopSeq = function(){
                     $interval.cancel(play);
-                    $interval.cancel(stopplay);
             };
-            EndSeq = $timeout(function(){StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);},(500+tempo)*num);//end demo, start listen phase in 500
+            var CheckEnd = function(){
+                    if (i == num){
+                        StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);
+                    }
+            };
+            //EndSeq = $timeout(function(){StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);},(500+tempo)*num);//end demo, start listen phase in 500
     };
     $scope.Play = function(bar){
         //light the corresponding bar
