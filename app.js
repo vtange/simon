@@ -12,7 +12,7 @@ app.factory('memory', function(){
 app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', function($scope, memory, $timeout, $interval){
     $scope.instrum = memory; // load service
     var sounds = [];//preload sounds
-    for (var k=0;k<$scope.instrum.xyphone.length;k++){sounds.push(new Audio($scope.instrum.xyphone[k].tune))};
+    for (var k=0;k<$scope.instrum.xyphone.length;k++){sounds.push(new Audio($scope.instrum.xyphone[k].tune))};//preload sounds
     $scope.set_styling = function (input) {
         if (input.playing) {
             return { "height": input.length, "box-shadow": input.color }
@@ -20,7 +20,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         else{
         return { "height": input.length }
         };
-    };
+    };//dynamic CSS from JSON
     $scope.backlight = function (input) {
         if (input.playing) {
             return { "box-shadow": input.light }
@@ -28,10 +28,10 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         else{
         return {  }
         };
-    };
+    };//dynamic CSS from JSON
     $scope.hinting = function (input) {
             return { "box-shadow": input.color }
-    };
+    };//dynamic CSS from JSON
     $scope.ShowGuide = function (input) {
         if (!input.guide) {
             input.guide = true;
@@ -39,13 +39,13 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         else{
             input.guide = false;
         };
-    };
+    };//mouseenter and leave
     //states and settings
     $scope.power = false;//changes with checkbox
-    $scope.playing = false;
-    $scope.strict = false;
-    $scope.showingDemo = false;
-    $scope.listening = false;
+    $scope.playing = false;//prevents strict while playing
+    $scope.strict = false;//strict mode
+    $scope.showingDemo = false;//game is in demo mode?
+    $scope.listening = false;//game is in listen mode?
     $scope.CutPower = function () {
         $scope.listening = false;//end listening
         if ($scope.showingDemo){//end current demo
@@ -103,6 +103,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             $scope.showingDemo = true;//begin demo
             var i = 0;
             play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]]); $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1;CheckEnd()},tempo*0.75);},tempo);
+                    //interval tempo millseconds: play the seq, unplay it in 75%tempo, increment i, check if i reached num
             var StopSeq = function(){
                     $interval.cancel(play);
             };
@@ -118,16 +119,10 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //use this for player input as well
         bar.playing = true;
             sounds[bar.number].play();
-/*
-      // Play audio
-      var wav = 'http://www.oringz.com/oringz-uploads/sounds-917-communication-channel.mp3';
-      var audio = new Audio(wav);
-			audio.play();
-      */
     };
     $scope.UnPlay = function(bar){
         bar.playing = false;
-    };
+    };//turns off light
     $scope.Listen = function (){
         $scope.playerEntered = [];
         $scope.listening = true;
@@ -138,25 +133,18 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             function( newValue, oldValue ) {
                 if(newValue.length > 0){
                 //console.log(newValue);
-                    if($scope.seq.slice(0,newValue.length).equals(newValue)&& newValue.length == $scope.count){
+                    if($scope.seq.slice(0,newValue.length).equals(newValue)&& newValue.length == $scope.count){//newvalue is same as seq and reached count
                         $scope.listening = false;
                         $scope.LevelUp();
                     }
-                    if(!$scope.seq.slice(0,newValue.length).equals(newValue)){
+                    if(!$scope.seq.slice(0,newValue.length).equals(newValue)){//the moment newvalue isn't same as seq
                         $scope.listening = false;
                         $scope.Failure();
                     }
                 }
             }
         );
-        
-        //if timeout or fail, show frown, delay, PlaySeq(current tempo, num)
-        
-        
-        
-        
-        //if sucess, show happy, delay, PlaySeq(num+1);
-    };
+    };//listening mode
     $scope.Enter = function (bar){
         if ($scope.listening){
             $scope.playerEntered.push(bar.number);

@@ -3,3 +3,5 @@ simon game http://vtange.github.io/simon/
 
 TODO
 would like to find a way to cancel all timeouts. maybe use a array of timeouts and assign each timeout to that array?
+
+also find a way to preload sounds so they don't lag the first time they're played

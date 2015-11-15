@@ -8,12 +8,12 @@
     <script type="text/javascript" src="app.js"></script>
 </head>
 <body data-ng-app="Simon" data-ng-controller="MainCtrl as app">
-    <div id="darkness" class="disappear" data-ng-class="{'disappear': !power, 'appear': power}"></div>
+    <div id="darkness" class="disappear" data-ng-class="{'disappear': !power, 'appear': power}"></div><!--DARKEN BACKGROUND-->
   <div class="content">
       <div class="game">
         <div class="xylo-container">
             <div id="click-block" data-ng-if="!listening"></div>
-            <div class="xylo" data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)" data-ng-mouseenter="ShowGuide(bar)" data-ng-mousedown="Play(bar)" data-ng-mouseleave="UnPlay(bar);ShowGuide(bar)" data-ng-mouseup="UnPlay(bar)" data-ng-click="Enter(bar)"><div id="pip-holder" data-ng-style="backlight(bar)"><div id="p1"></div><div id="p2"></div></div><div data-ng-style="hinting(bar)" class="disappear" data-ng-class="{'disappear': !bar.guide, 'appearfull': bar.guide}" id="guide"></div></div>
+            <div class="xylo" data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)" data-ng-mouseenter="ShowGuide(bar)" data-ng-mousedown="Play(bar)" data-ng-mouseleave="UnPlay(bar);ShowGuide(bar)" data-ng-mouseup="UnPlay(bar)" data-ng-click="Enter(bar)"><div id="pip-holder" data-ng-style="backlight(bar)"><div id="p1"></div><div id="p2"></div></div><div data-ng-style="hinting(bar)" class="disappear" data-ng-class="{'disappear': !bar.guide, 'appearfull': bar.guide}" id="guide"></div></div><!--XYLO OBJECTS-->
           </div>
           <div class="game-ctrl-panel">
             <div class="display-container">
