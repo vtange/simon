@@ -117,6 +117,14 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         //play the corresponding tune
         //use this for player input as well
         bar.playing = true;
+        var audio = new Audio(bar.tune);
+            audio.play();
+/*
+      // Play audio
+      var wav = 'http://www.oringz.com/oringz-uploads/sounds-917-communication-channel.mp3';
+      var audio = new Audio(wav);
+			audio.play();
+      */
     };
     $scope.UnPlay = function(bar){
         bar.playing = false;
@@ -195,17 +203,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         $timeout(function(){$scope.count +=1;$scope.tempo -=25; $scope.PlaySeq($scope.tempo, $scope.count)},1500);//+1 count, start demo again in 1500
         }
     };
-
-    
-    
-    
-/*
-      // Play audio
-      var wav = 'http://www.oringz.com/oringz-uploads/sounds-917-communication-channel.mp3';
-      var audio = new Audio(wav);
-			audio.play();
-      
-      */
 }]);//end of controller
   //end of function
 })();

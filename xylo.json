@@ -6,7 +6,7 @@ xylo = [
         "length": 340,
         "color": "0px 340px rgba(255, 0, 80, 0.3) inset",
         "light": "0px 0px 30px rgba(255, 0, 80, 0.3)",
-        "tune": "mon_Carnivorefung.png"
+        "tune": "sounds/deep1.mp3"
     },
     bar2 = {
         "number": 1,
@@ -15,7 +15,7 @@ xylo = [
         "length": 320,
         "color": "0px 320px rgba(255, 0, 0, 0.5) inset",
         "light": "0px 0px 30px rgba(255, 0, 0, 0.5)",
-        "tune": "mon_Carnivorefung.png"
+        "tune": "sounds/deep2.mp3"
     },
     bar3 = {
         "number": 2,
@@ -24,7 +24,7 @@ xylo = [
         "length": 300,
         "color": "0px 300px rgba(255, 100, 0, 0.5) inset",
         "light": "0px 0px 30px rgba(255, 100, 0, 0.5)",
-        "tune": "mon_Carnivorefung.png"
+        "tune": "sounds/deep3.mp3"
     },
     bar4 = {
         "number": 3,
@@ -33,7 +33,7 @@ xylo = [
         "length": 280,
         "color": "0px 280px rgba(255, 200, 0, 0.5) inset",
         "light": "0px 0px 30px rgba(255, 200, 0, 0.5)",
-        "tune": "mon_Carnivorefung.png"
+        "tune": "sounds/deep4.mp3"
     },
     bar5 = {
         "number": 4,
@@ -42,7 +42,7 @@ xylo = [
         "length": 260,
         "color": "0px 260px rgba(100, 255, 0, 0.5) inset",
         "light": "0px 0px 30px rgba(100, 255, 0, 0.5)",
-        "tune": "mon_Carnivorefung.png"
+        "tune": "sounds/high1.mp3"
     },
     bar6 = {
         "number": 5,
@@ -51,7 +51,7 @@ xylo = [
         "length": 240,
         "color": "0px 240px rgba(0, 255, 92, 0.5) inset",
         "light": "0px 0px 30px rgba(0, 255, 92, 0.5)",
-        "tune": "mon_Carnivorefung.png"
+        "tune": "sounds/high2.mp3"
     },
     bar7 = {
         "number": 6,
@@ -60,7 +60,7 @@ xylo = [
         "length": 220,
         "color": "0px 220px rgba(0, 255, 255, 0.5) inset",
         "light": "0px 0px 30px rgba(0, 255, 255, 0.5)",
-        "tune": "mon_Carnivorefung.png"
+        "tune": "sounds/high3.mp3"
     },
     bar8 = {
         "number": 7,
@@ -69,6 +69,6 @@ xylo = [
         "length": 200,
         "color": "0px 200px rgba(0, 0, 255, 0.5) inset",
         "light": "0px 0px 30px rgba(0, 0, 255, 0.5)",
-        "tune": "mon_Carnivorefung.png"
+        "tune": "sounds/high4.mp3"
     }
 ];
