@@ -13,7 +13,7 @@
       <div class="game">
         <div class="xylo-container">
             <div id="click-block" data-ng-if="!listening"></div>
-            <div class="xylo" data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)" data-ng-mousedown="Play(bar)" data-ng-mouseleave="UnPlay(bar)" data-ng-mouseup="UnPlay(bar)" data-ng-click="Enter(bar)"><div id="pip-holder" data-ng-style="backlight(bar)"><div id="p1"></div><div id="p2"></div></div></div>
+            <div class="xylo" data-ng-repeat="bar in instrum.xyphone" data-ng-style="set_styling(bar)" data-ng-mouseenter="ShowGuide(bar)" data-ng-mousedown="Play(bar)" data-ng-mouseleave="UnPlay(bar);ShowGuide(bar)" data-ng-mouseup="UnPlay(bar)" data-ng-click="Enter(bar)"><div id="pip-holder" data-ng-style="backlight(bar)"><div id="p1"></div><div id="p2"></div></div><div data-ng-style="hinting(bar)" data-ng-show="bar.guide" id="guide"></div></div>
           </div>
           <div class="game-ctrl-panel">
             <div class="display-container">

@@ -230,7 +230,14 @@ body {
 #p2{
     top:77%;
 }
-
+#guide{
+    position: relative;
+    top:10px;
+    height:10px;
+    width:100%;
+    background-color:gainsboro;
+    z-index: 5;
+}
 
 
 /*---------*/

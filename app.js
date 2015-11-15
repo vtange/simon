@@ -27,6 +27,17 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         return {  }
         };
     };
+    $scope.hinting = function (input) {
+            return { "box-shadow": input.color }
+    };
+    $scope.ShowGuide = function (input) {
+        if (!input.guide) {
+            input.guide = true;
+        }
+        else{
+            input.guide = false;
+        };
+    };
     //states and settings
     $scope.power = false;//changes with checkbox
     $scope.playing = false;
@@ -34,6 +45,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.showingDemo = false;
     $scope.listening = false;
     $scope.CutPower = function () {
+        $scope.listening = false;//end listening
         if ($scope.showingDemo){//end current demo
             $timeout.cancel(EndSeq);
             $interval.cancel(play);
@@ -63,6 +75,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.tempo = 700;
     $scope.count = 0;
     $scope.NewGame = function () {
+        $scope.listening = false;//end listening
         if ($scope.showingDemo){//end current demo
             $timeout.cancel(EndSeq);
             $interval.cancel(play);
