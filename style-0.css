@@ -35,6 +35,9 @@ body {
 .appear{
     opacity:0.5;
 }
+.appearfull{
+    opacity:0.9;
+}
 .disappear{
     opacity:0;
 }
@@ -235,8 +238,10 @@ body {
     top:10px;
     height:10px;
     width:100%;
+    border-radius: 5px;
     background-color:gainsboro;
     z-index: 5;
+    transition: all 0.2s ease-in-out;
 }
 
 
