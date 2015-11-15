@@ -99,7 +99,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         for (var i=0;i<20;i++){
             $scope.seq.push(Math.floor(Math.random() * 8));
         }
-        console.log($scope.seq);
+        //console.log($scope.seq);
     };
     $scope.PlaySeq = function(tempo, num){
             $scope.showingDemo = true;//begin demo
@@ -125,21 +125,18 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         $scope.playerEntered = [];
         $scope.listening = true;
             // turn off  click blocker element
-        console.log("Listening");
+        //console.log("Listening");
         $scope.$watchCollection(
             "playerEntered",
             function( newValue, oldValue ) {
                 if(newValue.length > 0){
-                console.log(newValue);
-                console.log($scope.seq.slice(0,newValue.length));
+                //console.log(newValue);
                     if($scope.seq.slice(0,newValue.length).equals(newValue)&& newValue.length == $scope.count){
                         $scope.listening = false;
-                        console.log("success");//run sucess function
                         $scope.LevelUp();
                     }
                     if(!$scope.seq.slice(0,newValue.length).equals(newValue)){
                         $scope.listening = false;
-                        console.log("failure");//run failure function
                         $scope.Failure();
                     }
                 }
