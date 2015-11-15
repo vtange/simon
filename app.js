@@ -182,21 +182,17 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.LevelUp = function (){
         //show happy face
         var placeholder = $scope.count;
-        $scope.count = "😊";
-        
-        if ($scope.count == 20){
+        if (placeholder == 20){
         //longer happy face, dance around flash
-            $timeout(function(){$scope.count = "😄"},1500);//display in 1.5sec
-            $timeout(function(){$scope.count = "Win"},3000);//display in another 1.5sec
-            $timeout(function(){$scope.count = "😄"},4500);//display in another 1.5sec
-            $timeout(function(){$scope.count = "Win"},6000);//display in another 1.5sec
+            $scope.count = "😄";
+            $timeout(function(){$scope.count = "Win"},1500);//display in another 1.5sec
+            $timeout(function(){$scope.count = "😄"},3000);//display in another 1.5sec
         //if 20 count, newseq, reset count, tempo
-            $timeout(function(){$scope.count = placeholder},7500);//scopecount back in 7.5
-            $scope.NewSeq();
-            $timeout(function(){$scope.count = 1;$scope.tempo = 700; $scope.PlaySeq($scope.tempo, $scope.count)},7500);//restart demo in 7.5 sec
+            $timeout(function(){$scope.NewGame()},4500);//end game in 4.5
         }
         else{
-        $timeout(function(){$scope.count = placeholder},1500);//scopecount back in 1.4sec
+        $scope.count = "😊";
+        $timeout(function(){$scope.count = placeholder},1500);//scopecount back in 1.5sec
         //increment count, tempo
         $timeout(function(){$scope.count +=1;$scope.tempo -=10; $scope.PlaySeq($scope.tempo, $scope.count)},1500);//+1 count, start demo again in 1500
         }
