@@ -19,8 +19,8 @@ body {
     position: absolute;
     top:0;
     left:0;
-    height: 100vh;
-    width:100vw;
+    height: 100%;
+    width:100%;
     background: #000;
     transition: all 0.5s ease-in-out;
 }
@@ -41,8 +41,6 @@ body {
 .disappear{
     opacity:0;
 }
-
-
 
 /*----------*/
 /*game panel*/
@@ -179,10 +177,6 @@ body {
       filter: blur(3px);
 }
 
-
-
-
-
 /*---------*/
 /*xylophone*/
 /*---------*/
@@ -208,6 +202,7 @@ body {
     width:12%;
     border:1px solid #111;
     border-radius:6px;
+    background-image: url("lib/wood.jpg");
     background-color:burlywood;
     vertical-align: center;
     cursor: pointer;
@@ -243,7 +238,6 @@ body {
     z-index: 5;
     transition: all 0.2s ease-in-out;
 }
-
 
 /*---------*/
 /*powerswitch*/
