@@ -47,9 +47,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.CutPower = function () {
         $scope.listening = false;//end listening
         if ($scope.showingDemo){//end current demo
-            $timeout.cancel(EndSeq);
             $interval.cancel(play);
-            $interval.cancel(stopplay);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
             $scope.showingDemo = false;
         };
@@ -77,9 +75,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.NewGame = function () {
         $scope.listening = false;//end listening
         if ($scope.showingDemo){//end current demo
-            $timeout.cancel(EndSeq);
             $interval.cancel(play);
-            $interval.cancel(stopplay);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]])};
             $scope.showingDemo = false;
         };
@@ -105,7 +101,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
             $scope.showingDemo = true;//begin demo
             var i = 0;
             play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]]); $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1;CheckEnd()},tempo*0.75);},tempo);
-            //stopplay = $interval(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1},500+tempo);
             var StopSeq = function(){
                     $interval.cancel(play);
             };
@@ -114,7 +109,6 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
                         StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);
                     }
             };
-            //EndSeq = $timeout(function(){StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);},(500+tempo)*num);//end demo, start listen phase in 500
     };
     $scope.Play = function(bar){
         //light the corresponding bar
@@ -204,7 +198,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         else{
         $timeout(function(){$scope.count = placeholder},1500);//scopecount back in 1.4sec
         //increment count, tempo
-        $timeout(function(){$scope.count +=1;$scope.tempo -=25; $scope.PlaySeq($scope.tempo, $scope.count)},1500);//+1 count, start demo again in 1500
+        $timeout(function(){$scope.count +=1;$scope.tempo -=10; $scope.PlaySeq($scope.tempo, $scope.count)},1500);//+1 count, start demo again in 1500
         }
     };
 }]);//end of controller
