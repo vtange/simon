@@ -1,7 +1,15 @@
+![alt tag](http://res.cloudinary.com/dmj8qtant/image/upload/c_limit,w_600/v1452900736/gxx0rmutpczk8fv0vodq.jpg)
 # simon
 
-# Takeaways
-CSS:
+## Tech
+AngularJS watchiing, Array_Equals.js, $timeouts and $intervals, PlainJS(Audio)
+
+## Niceties
+CSS Overlays, Lights and Glows
+Array deep comparison
+
+### Details
+#### CSS
  - ng-class to smooth darken background when power is on. (Using opacity on black) (Orig. used in TOS Mapdex)
  
  ```
@@ -16,8 +24,8 @@ CSS:
  - Circular glow button, iPhone-style switch
  - TM symbol and happy/frowny faces.
  
-JS:
- - ng-style use with JSON for generating and animating Xylophone bars:
+#### JS
+ - Use ng-style with JSON & ng-repeat for generating and animating Xylophone bars:
  
  ```
     $scope.set_styling = function (input) {
@@ -39,9 +47,10 @@ JS:
         };
  ```
  - Sequence:
+
  ```
- Up Number -> Play Demo -> Listen -> :), Up Number...
-                                  -> :(, Repeat
+ Up Number -> Play Demo -> Listen (allow user input) -> ":)" -> Up Number -> Play Demo....
+                                                 L ---> ":(" -> Play Demo -> Listen Again...
  ```
  - Block User Action with a <div> that only disappears during Listen Phase.
  ```
@@ -54,7 +63,7 @@ JS:
  ```
  
  
- TODO
+##### TODO
 
 would like to find a way to find and cancel all pending timeouts. 
 maybe use a array of timeouts and assign each timeout to that array?
