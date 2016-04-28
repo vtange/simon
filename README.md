@@ -2,7 +2,7 @@
 # simon
 
 ## Tech
-AngularJS watchiing, Array_Equals.js, $timeouts and $intervals, PlainJS(Audio)
+AngularJS + watching, Array_Equals.js, $timeouts and $intervals, PlainJS(Audio)
 
 ## Niceties
 CSS Overlays, Lights and Glows
