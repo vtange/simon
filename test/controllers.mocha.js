@@ -14,12 +14,22 @@ describe('Xymon Game: ', function() {
 
   describe('Game', function() {
 
-	  //aesthetics
+	  //aesthetics, turn off xylo[0] after each test, turn it on during each test
+	  
+	afterEach(function() {
+		xylo[0].playing = false;
+	});
+	  
 	it('should set xylo heights', function() {
 		expect(scope.set_styling(xylo[0]).height).to.equal(340);
+		xylo[0].playing = true;
+		expect(scope.set_styling(xylo[0])['box-shadow']).to.equal("0px 340px rgba(255, 0, 80, 0.3) inset");
 	});
 
 	it('should light up when hovered / played', function() {
+		expect(scope.backlight(xylo[0])['box-shadow']).to.equal(undefined);
+		xylo[0].playing = true;
+		expect(scope.backlight(xylo[0])['box-shadow']).to.equal("0px 0px 30px rgba(255, 0, 80, 0.3)");
 	});
 
 	it('should show mouse guides', function() {
