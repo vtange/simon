@@ -45,7 +45,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.strict = false;//strict mode
     $scope.showingDemo = false;//game is in demo mode?
     $scope.listening = false;//game is in listen mode?
-	var cutDemo = function(){
+	$scope.cutDemo = function(){
         if ($scope.showingDemo){//end current demo
             $interval.cancel(play);
             for(var i=0;i<$scope.instrum.xyphone.length;i++){$scope.UnPlay($scope.instrum.xyphone[i])};
@@ -54,7 +54,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
 	}
     $scope.CutPower = function () {
         $scope.listening = false;//end listening
-		cutDemo();
+		$scope.cutDemo();
         if ($scope.playing){//turn off play button
             $scope.playing = false;
             $scope.count = 0;
@@ -78,7 +78,7 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
     $scope.count = 0;
     $scope.NewGame = function () {
         $scope.listening = false;//end listening
-		cutDemo();
+		$scope.cutDemo();
         if ($scope.playing == false && $scope.power){//turn on new game
             $scope.playing = true;
             $scope.NewSeq();
