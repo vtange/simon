@@ -6,6 +6,7 @@ describe('Xymon Game: ', function() {
   beforeEach(module('Simon'));
 
   beforeEach(inject(function($rootScope, $controller) {
+	xylo = xylo;//get xylos
     scope = $rootScope.$new();
     ctrl = $controller('MainCtrl', {$scope: scope});
   }));
@@ -13,22 +14,34 @@ describe('Xymon Game: ', function() {
 
   describe('Game', function() {
 
-	//power is off, new game should not work
-	beforeEach(function() {
-		scope.NewGame();
-		scope.Snape();
+	  //aesthetics
+	it('should set xylo heights', function() {
+		expect(scope.set_styling(xylo[0]).height).to.equal(340);
 	});
 
-	it('should not be playing', function() {
-		expect(scope.playing).to.equal(false);
-    });
+	it('should light up when hovered / played', function() {
+	});
 
-	it('should not be strict mode without power', function() {
-		expect(scope.strict).to.equal(false);
-    });
-	  
-	  describe('strict mode and new game with power', function() {
-		  
+	it('should show mouse guides', function() {
+	});
+
+	describe('playing without power', function() {
+		//power is off, new game should not work
+		beforeEach(function() {
+			scope.NewGame();
+			scope.Snape();
+		});
+
+		it('should not be playing', function() {
+			expect(scope.playing).to.equal(false);
+		});
+
+		it('should not be strict mode without power', function() {
+			expect(scope.strict).to.equal(false);
+		});
+		});
+	describe('playing with power', function() {
+
 		beforeEach(function () {
 			scope.power = true;
 			scope.Snape();
