@@ -30,9 +30,14 @@ describe('Xymon Game: ', function() {
 		expect(scope.backlight(xylo[0])['box-shadow']).to.equal(undefined);
 		xylo[0].playing = true;
 		expect(scope.backlight(xylo[0])['box-shadow']).to.equal("0px 0px 30px rgba(255, 0, 80, 0.3)");
+		expect(scope.hinting(xylo[0])['box-shadow']).to.equal("0px 340px rgba(255, 0, 80, 0.3) inset");
 	});
 
 	it('should show mouse guides', function() {
+		scope.ShowGuide(xylo[0]);
+		expect(xylo[0].guide).to.equal(true);
+		scope.ShowGuide(xylo[0]);
+		expect(xylo[0].guide).to.equal(false);
 	});
 
 	describe('playing without power', function() {
