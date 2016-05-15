@@ -101,12 +101,9 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
 	var play = null;
 	$scope.CheckEnd = function(i,num){
                     if (i == num){
-                        $scope.StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);
+                        $interval.cancel(play);$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);
                     }
             };
-	$scope.StopSeq = function(){
-			$interval.cancel(play);
-	};
     $scope.PlaySeq = function(tempo, num){
             $scope.showingDemo = true;//begin demo
             var i = 0;

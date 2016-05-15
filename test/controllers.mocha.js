@@ -94,15 +94,13 @@ describe('Xymon Game: ', function() {
 			it('should be showing demo', function() {
 				expect(scope.showingDemo).to.equal(true);
 			});
-			describe('cutting off demo', function() {
-
-				beforeEach(function () {
-					scope.cutDemo();
-				});
-
-				it('stopped demo', function() {
-					expect(scope.showingDemo).to.equal(false);
-				});
+			it('can cut demo short', function() {
+				scope.cutDemo();
+				expect(scope.showingDemo).to.equal(false);
+			});
+			it('can end demo', function() {
+				scope.StopSeq();
+				//play should've stopped
 			});
 		});
 	  });
