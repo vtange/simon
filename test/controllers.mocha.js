@@ -98,9 +98,14 @@ describe('Xymon Game: ', function() {
 				scope.cutDemo();
 				expect(scope.showingDemo).to.equal(false);
 			});
-			it('can end demo', function() {
-				scope.StopSeq();
+			it('ends demo when i hits num', function() {
+				scope.CheckEnd(4,4);
 				//play should've stopped
+				expect(scope.showingDemo).to.equal(true);
+			});
+			it('nothing happens until i hits num', function() {
+				scope.CheckEnd(1,4);
+				expect(scope.showingDemo).to.equal(true);
 			});
 		});
 	  });
