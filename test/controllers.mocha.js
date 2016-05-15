@@ -42,7 +42,8 @@ describe('Xymon Game: ', function() {
 		it('should be strict mode now', function() {
 			expect(scope.strict).to.equal(true);
 		});
-		  describe('cutting off power', function() {
+		  
+		describe('cutting off power', function() {
 
 			beforeEach(function () {
 				scope.CutPower();
@@ -54,7 +55,28 @@ describe('Xymon Game: ', function() {
 			it('strict mode out', function() {
 				expect(scope.strict).to.equal(false);
 			});
-		  });
+		});
+		describe('playing a demo', function() {
+
+			beforeEach(function () {
+				//don't end demo
+				sinon.stub(scope, 'CheckEnd', function() {});
+				scope.PlaySeq();
+			});
+			it('should be showing demo', function() {
+				expect(scope.showingDemo).to.equal(true);
+			});
+			describe('cutting off demo', function() {
+
+				beforeEach(function () {
+					scope.cutDemo();
+				});
+
+				it('stopped demo', function() {
+					expect(scope.showingDemo).to.equal(false);
+				});
+			});
+		});
 	  });
   });
 });
