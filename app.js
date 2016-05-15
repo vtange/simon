@@ -97,19 +97,21 @@ app.controller('MainCtrl', ['$scope', 'memory', '$timeout', '$interval', functio
         }
         //console.log($scope.seq);
     };
+	
+	var play = null;
+	$scope.CheckEnd = function(i,num){
+                    if (i == num){
+                        $scope.StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);
+                    }
+            };
+	$scope.StopSeq = function(){
+			$interval.cancel(play);
+	};
     $scope.PlaySeq = function(tempo, num){
             $scope.showingDemo = true;//begin demo
             var i = 0;
-            play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]]); $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1;CheckEnd()},tempo*0.75);},tempo);
-                    //interval tempo millseconds: play the seq, unplay it in 75%tempo, increment i, check if i reached num
-            var StopSeq = function(){
-                    $interval.cancel(play);
-            };
-            var CheckEnd = function(){
-                    if (i == num){
-                        StopSeq();$scope.showingDemo = false;$timeout(function(){$scope.Listen()},500);
-                    }
-            };
+			//interval tempo millseconds: play the seq, unplay it in 75%tempo, increment i, check if i reached num
+            play = $interval(function(){$scope.Play($scope.instrum.xyphone[$scope.seq[i]]); $timeout(function(){$scope.UnPlay($scope.instrum.xyphone[$scope.seq[i]]);i+=1;$scope.CheckEnd(i,num)},tempo*0.75);},tempo);
     };
     $scope.Play = function(bar){
         //light the corresponding bar
