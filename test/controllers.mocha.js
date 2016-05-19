@@ -88,7 +88,7 @@ describe('Xymon Game: ', function() {
 
 			beforeEach(function () {
 				//don't end demo
-				sinon.stub(scope, 'CheckEnd', function() {});
+				checkend = sinon.stub(scope, 'CheckEnd', function() {});
 				scope.PlaySeq();
 			});
 			it('should be showing demo', function() {
@@ -99,11 +99,13 @@ describe('Xymon Game: ', function() {
 				expect(scope.showingDemo).to.equal(false);
 			});
 			it('ends demo when i hits num', function() {
+				checkend.restore();
 				scope.CheckEnd(4,4);
 				//play should've stopped
-				expect(scope.showingDemo).to.equal(true);
+				expect(scope.showingDemo).to.equal(false);
 			});
 			it('nothing happens until i hits num', function() {
+				checkend.restore();
 				scope.CheckEnd(1,4);
 				expect(scope.showingDemo).to.equal(true);
 			});
