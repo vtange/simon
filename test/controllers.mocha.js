@@ -2,6 +2,7 @@ describe('Xymon Game: ', function() {
 
   var scope;
   var ctrl;
+  var audioOriginal, audioMock;
 
   beforeEach(module('Simon'));
 
@@ -15,20 +16,24 @@ describe('Xymon Game: ', function() {
   describe('Game', function() {
 
 	  //aesthetics, turn off xylo[0] after each test, turn it on during each test
-	  
+	beforeEach(function(){
+		audioOriginal = window.Audio;
+		audioMock = { play:function(){}};
+        window.Audio = function() { return audioMock; };
+	})
 	afterEach(function() {
 		xylo[0].playing = false;
 	});
 	  
 	it('should set xylo heights', function() {
 		expect(scope.set_styling(xylo[0]).height).to.equal(340);
-		xylo[0].playing = true;
+		scope.Play(xylo[0]);
 		expect(scope.set_styling(xylo[0])['box-shadow']).to.equal("0px 340px rgba(255, 0, 80, 0.3) inset");
 	});
 
 	it('should light up when hovered / played', function() {
 		expect(scope.backlight(xylo[0])['box-shadow']).to.equal(undefined);
-		xylo[0].playing = true;
+		scope.Play(xylo[0]);
 		expect(scope.backlight(xylo[0])['box-shadow']).to.equal("0px 0px 30px rgba(255, 0, 80, 0.3)");
 		expect(scope.hinting(xylo[0])['box-shadow']).to.equal("0px 340px rgba(255, 0, 80, 0.3) inset");
 	});
