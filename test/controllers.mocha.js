@@ -125,7 +125,7 @@ describe('Xymon Game: ', function() {
 
 			beforeEach(function () {
 				scope.seq = [11,12,13];
-				
+				scope.count = 3;
 				scope.Listen();
 			});
 			it('should be listening', function() {
@@ -133,16 +133,45 @@ describe('Xymon Game: ', function() {
 			});
 			it('should watch for player plays', function() {
 				scope.Enter({number:11});
-				expect(scope.listening).to.equal(true);
+				expect(scope.playerEntered).to.deep.equal([11]);
 			});
-			it('should stop listening if player plays wrong', function() {
-				scope.Enter({number:6});
-				expect(scope.listening).to.equal(true);
+			it('should level up on correct play', function() {
+				sinon.stub(scope, 'LevelUp', function() {});
+				scope.$apply('playerEntered = [11,12,13]')
+				expect(scope.LevelUp.callCount).to.equal(1);
+			});
+			it('should stop listening on correct play', function() {
+				sinon.stub(scope, 'LevelUp', function() {});
+				scope.$apply('playerEntered = [11,12,13]')
+				expect(scope.listening).to.equal(false);
+			});
+			it('should level up on fail play', function() {
+				sinon.stub(scope, 'Failure', function() {});
+				scope.$apply('playerEntered = [11,12,14]')
+				expect(scope.Failure.callCount).to.equal(1);
+			});
+			it('should stop listening on fail play', function() {
+				sinon.stub(scope, 'Failure', function() {});
+				scope.$apply('playerEntered = [11,12,14]')
+				expect(scope.listening).to.equal(false);
 			});
 			it('should change seq if fail', inject(function($timeout) {
 				scope.Failure();
 				$timeout.flush();
 				expect(scope.seq).to.not.deep.equal([11,12,13]);
+			}));
+			it('should change seq if complete', inject(function($timeout) {
+				scope.count = 20;
+				scope.LevelUp();
+				scope.NewGame();
+				$timeout.flush();
+				expect(scope.seq).to.not.deep.equal([11,12,13]);
+			}));
+			it('should not change seq if fail in normal mode (not strict)', inject(function($timeout) {
+				scope.strict = false;
+				scope.Failure();
+				$timeout.flush();
+				expect(scope.seq).to.deep.equal([11,12,13]);
 			}));
 			it('should not change seq if ok', inject(function($timeout) {
 				scope.LevelUp();
