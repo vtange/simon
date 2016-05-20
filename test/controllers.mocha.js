@@ -125,6 +125,7 @@ describe('Xymon Game: ', function() {
 
 			beforeEach(function () {
 				scope.seq = [11,12,13];
+				
 				scope.Listen();
 			});
 			it('should be listening', function() {
@@ -138,14 +139,16 @@ describe('Xymon Game: ', function() {
 				scope.Enter({number:6});
 				expect(scope.listening).to.equal(true);
 			});
-			it('should change seq if fail', function() {
+			it('should change seq if fail', inject(function($timeout) {
 				scope.Failure();
+				$timeout.flush();
 				expect(scope.seq).to.not.deep.equal([11,12,13]);
-			});
-			it('should not change seq if ok', function() {
+			}));
+			it('should not change seq if ok', inject(function($timeout) {
 				scope.LevelUp();
+				$timeout.flush();
 				expect(scope.seq).to.deep.equal([11,12,13]);
-			});
+			}));
 		});
 	  });
   });
