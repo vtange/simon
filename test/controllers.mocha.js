@@ -59,7 +59,13 @@ describe('Xymon Game: ', function() {
 		it('should not be strict mode without power', function() {
 			expect(scope.strict).to.equal(false);
 		});
+
+		it('should not register any plays', function() {
+			scope.Enter({number:1});
+			expect(scope.playerEntered).to.deep.equal([]);
 		});
+	});
+	  
 	describe('playing with power', function() {
 
 		beforeEach(function () {
@@ -113,6 +119,32 @@ describe('Xymon Game: ', function() {
 				checkend.restore();
 				scope.CheckEnd(1,4);
 				expect(scope.showingDemo).to.equal(true);
+			});
+		});
+		describe('listen mode', function() {
+
+			beforeEach(function () {
+				scope.seq = [11,12,13];
+				scope.Listen();
+			});
+			it('should be listening', function() {
+				expect(scope.listening).to.equal(true);
+			});
+			it('should watch for player plays', function() {
+				scope.Enter({number:11});
+				expect(scope.listening).to.equal(true);
+			});
+			it('should stop listening if player plays wrong', function() {
+				scope.Enter({number:6});
+				expect(scope.listening).to.equal(true);
+			});
+			it('should change seq if fail', function() {
+				scope.Failure();
+				expect(scope.seq).to.not.deep.equal([11,12,13]);
+			});
+			it('should not change seq if ok', function() {
+				scope.LevelUp();
+				expect(scope.seq).to.deep.equal([11,12,13]);
 			});
 		});
 	  });
