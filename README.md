@@ -4,6 +4,9 @@
 ## Tech
 AngularJS + watching, Array_Equals.js, $timeouts and $intervals, PlainJS(Audio)
 
+## Tested with:
+Karma, PhantomJS, Istanbul, Mocha, Chai, Sinon
+
 ## Niceties
 CSS Overlays, Lights and Glows
 Array deep comparison
